@@ -25,7 +25,7 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 
 page = st.radio(
     'Select map type',
-    ['Marker', 'Poly Line', ''],
+    ['Marker', 'Poly Line', 'MarkerCluster'],
     index = 0
     )
 
@@ -41,7 +41,7 @@ elif page == 'Poly Line':
         locations = walk_lst
     ).add_to(m)
 
-elif page == 'Poly Line':
+elif page == 'MarkerCluster':
     m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
     plugins.MarkerCluster((df_shops['lat'], df_shops['lon'])).add_to(m)
 
