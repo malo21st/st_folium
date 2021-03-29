@@ -43,8 +43,10 @@ elif page == 'Poly Line':
 
 elif page == 'MarkerCluster':
     m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
+    locations = []
     for _, pos in df_shops.iterrows():
-        plugins.MarkerCluster((pos['lat'], pos['lon'])).add_to(m)
+        locations.append((pos['lat'], pos['lon']))
+    plugins.MarkerCluster(locations).add_to(m)
 
 # call to render Folium map in Streamlit
 folium_static(m)
