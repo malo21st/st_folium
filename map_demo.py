@@ -33,6 +33,8 @@ page = st.sidebar.radio(
     index = 0
     )
 
+# タイトル
+st.title("Folium map in Streamlit")
 # 地図作成
 m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
 if page == 'Marker':
@@ -47,5 +49,5 @@ elif page == 'Poly Line':
 elif page == 'MarkerCluster':
     plugins.MarkerCluster(shop_lst).add_to(m)
 
-# call to render Folium map in Streamlit
+# 地図表示 Folium map in Streamlit
 folium_static(m)
