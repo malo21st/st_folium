@@ -37,6 +37,7 @@ page = st.sidebar.radio(
 st.title("Folium map in Streamlit")
 # 地図作成
 m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
+placeholder = st.empty()
 if page == 'Marker':
     for (lat, lon) in shop_lst:
         folium.Marker((lat, lon)).add_to(m)
@@ -57,4 +58,4 @@ if page == 'Tooltip':
     
 # 地図表示 Folium map in Streamlit
 folium_static(m)
-placeholder = st.empty()
+
