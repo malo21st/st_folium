@@ -28,8 +28,8 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 
 # サイドメニュー
 page = st.sidebar.radio(
-    'どれか選んでね：',
-    ['Marker', 'Poly Line', 'MarkerCluster'],
+    'Select menu：',
+    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip'],
     index = 0
     )
 
@@ -48,6 +48,11 @@ elif page == 'Poly Line':
 
 elif page == 'MarkerCluster':
     plugins.MarkerCluster(shop_lst).add_to(m)
+
+if page == 'Tooltip':
+    for _, shop in df_shops.iterrows():
+        note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
+        folium.Marker((shop['lat'], shop['lon']), tooltip = note).add_to(m)
 
 # 地図表示 Folium map in Streamlit
 folium_static(m)
