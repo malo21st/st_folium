@@ -36,7 +36,7 @@ page = st.sidebar.radio(
 # 地図作成
 m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
 if page == 'Marker':
-    folium.Marker(shop_lst, icon=folium.Icon(color='blue')).add_to(m)
+    folium.Marker(shop_lst).add_to(m)
         
 elif page == 'Poly Line':
     folium.PolyLine(
