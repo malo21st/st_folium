@@ -60,7 +60,7 @@ if page == 'Tooltip':
     placeholder.text("マーカーの上にマウスを持ってきてね")
 
 if page == '全部がっちゃんこ':
-    marker_cluster = MarkerCluster().add_to(m)
+    marker_cluster = plugins.MarkerCluster().add_to(m)
     for _, shop in df_shops.iterrows():
         note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
         folium.Marker((shop['lat'], shop['lon']), tooltip = note).add_to(marker_cluster)
