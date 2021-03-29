@@ -28,7 +28,7 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 
 # サイドメニュー
 page = st.sidebar.radio(
-    'Select map type',
+    'どれか選んでね：',
     ['Marker', 'Poly Line', 'MarkerCluster'],
     index = 0
     )
