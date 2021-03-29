@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_folium import folium_static
 import folium
+from folium import plugins
 import gpxpy
 import pandas as pd
 
@@ -24,11 +25,11 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 
 page = st.radio(
     'Select map type',
-    ['Marker', 'Poly Line'],
+    ['Marker', 'Poly Line', ''],
     index = 0
     )
 
-# center on Liberty Bell
+# 地図作成
 if page == 'Marker':
     m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
     for _, row in df_shops.iterrows():
@@ -39,6 +40,10 @@ elif page == 'Poly Line':
     folium.PolyLine(
         locations = walk_lst
     ).add_to(m)
+
+elif page == 'Poly Line':
+    m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
+    plugins.MarkerCluster((df_shops['lat'], df_shops['lon'])).add_to(m)
 
 # call to render Folium map in Streamlit
 folium_static(m)
