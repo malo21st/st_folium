@@ -41,14 +41,17 @@ placeholder = st.empty()
 if page == 'Marker':
     for (lat, lon) in shop_lst:
         folium.Marker((lat, lon)).add_to(m)
+    placeholder.text("地図上にマーカーを置けます")
         
 elif page == 'Poly Line':
     folium.PolyLine(
         locations = walk_lst
     ).add_to(m)
+    placeholder.text("線も引けちゃよ")
 
 elif page == 'MarkerCluster':
     plugins.MarkerCluster(shop_lst).add_to(m)
+    placeholder.text("倍率を変えると面白いよ")
 
 if page == 'Tooltip':
     for _, shop in df_shops.iterrows():
