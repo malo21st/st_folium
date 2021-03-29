@@ -65,7 +65,8 @@ if page == '全部がっちゃんこ':
         note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
         folium.Marker((shop['lat'], shop['lon']), tooltip = note).add_to(marker_cluster)
     folium.PolyLine(
-        locations = walk_lst
+        locations = walk_lst,
+        tooltip = "いつぞや歩いたルートです。"
     ).add_to(m)
     placeholder.text("全部がっちゃんこできます")
 
