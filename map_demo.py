@@ -53,7 +53,8 @@ if page == 'Tooltip':
     for _, shop in df_shops.iterrows():
         note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
         folium.Marker((shop['lat'], shop['lon']), tooltip = note).add_to(m)
-    st.markdown("マーカーの上にマウスを持ってきてね")
+    placeholder.text("マーカーの上にマウスを持ってきてね")
     
 # 地図表示 Folium map in Streamlit
 folium_static(m)
+placeholder = st.empty()
