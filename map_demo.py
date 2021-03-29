@@ -47,7 +47,7 @@ elif page == 'Poly Line':
     folium.PolyLine(
         locations = walk_lst
     ).add_to(m)
-    placeholder.text("線も引けちゃよ")
+    placeholder.text("線も引けちゃうよ")
 
 elif page == 'MarkerCluster':
     plugins.MarkerCluster(shop_lst).add_to(m)
