@@ -29,7 +29,7 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 # サイドメニュー
 page = st.sidebar.radio(
     'Select menu：',
-    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip'] #, '全部'],
+    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip'], #, '全部'],
     index = 0
     )
 
