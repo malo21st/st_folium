@@ -32,8 +32,8 @@ page = st.radio(
 # 地図作成
 if page == 'Marker':
     m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
-    for _, row in df_shops.iterrows():
-        folium.Marker((row['lat'], row['lon']), icon=folium.Icon(color='blue')).add_to(m)
+    for _, pos in df_shops.iterrows():
+        folium.Marker((pos['lat'], pos['lon']), icon=folium.Icon(color='blue')).add_to(m)
         
 elif page == 'Poly Line':
     m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
@@ -43,7 +43,8 @@ elif page == 'Poly Line':
 
 elif page == 'MarkerCluster':
     m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
-    plugins.MarkerCluster((df_shops['lat'], df_shops['lon'])).add_to(m)
+    for _, pos in df_shops.iterrows():
+        plugins.MarkerCluster((pos['lat'], pos['lon'])).add_to(m)
 
 # call to render Folium map in Streamlit
 folium_static(m)
