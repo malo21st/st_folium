@@ -81,7 +81,7 @@ if page == 'CircleMarker':
                             fill_opacity = 0.4,
                             tooltip = note,
                            ).add_to(m)
-    placeholder.markup("**コンビニ別に色分けしました**")
+    placeholder.markdown("**コンビニ別に色分けしました**")
 
 # 地図表示 Folium map in Streamlit
 folium_static(m)
