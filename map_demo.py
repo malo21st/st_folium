@@ -77,9 +77,8 @@ if page == 'CircleMarker':
                             radius= 5,
                             color = shop['color'],
                             fill_color = shop['color'],
+                            fill_opacity = 0.8,
                             tooltip = note,
-                            fill = True,
-                            fill_opacity=1,
                            ).add_to(m)
     placeholder.text("コンビニ別に色分けしました")
 
