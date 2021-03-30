@@ -41,23 +41,23 @@ placeholder = st.empty()
 if page == 'Marker':
     for (lat, lon) in shop_lst:
         folium.Marker((lat, lon)).add_to(m)
-    placeholder.text("地図上にマーカーを置けます")
+    placeholder.markdown("**地図上にマーカーを置けます**")
         
 elif page == 'Poly Line':
     folium.PolyLine(
         locations = walk_lst
     ).add_to(m)
-    placeholder.text("線も引けちゃうよ")
+    placeholder.markdown("**線も引けちゃうよ**")
 
 elif page == 'MarkerCluster':
     plugins.MarkerCluster(shop_lst).add_to(m)
-    placeholder.text("倍率を変えると面白いよ")
+    placeholder.markdown("**倍率を変えると面白いよ**")
 
 if page == 'Tooltip':
     for _, shop in df_shops.iterrows():
         note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
         folium.Marker((shop['lat'], shop['lon']), tooltip = note).add_to(m)
-    placeholder.text("マーカーの上にマウスを持ってきてね")
+    placeholder.markdown("**マーカーの上にマウスを持ってきてね**")
 
 if page == '全部がっちゃんこ':
     marker_cluster = plugins.MarkerCluster().add_to(m)
@@ -68,7 +68,7 @@ if page == '全部がっちゃんこ':
         locations = walk_lst,
         tooltip = "いつぞや歩いたルートです。"
     ).add_to(m)
-    placeholder.text("全部がっちゃんこできます")
+    placeholder.markdown("**全部がっちゃんこできます**")
 
 if page == 'CircleMarker':
     for _, shop in df_shops.iterrows():
