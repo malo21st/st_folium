@@ -40,7 +40,7 @@ tile = st.sidebar.selectbox(
     )
 
 # タイトル
-st.title("Folium map in Streamlit")
+st.title("Folium map in Streamlit お試し中")
 # 地図作成
 m = folium.Map(location=[center_lat, center_lon], tiles=tile, zoom_start=12)
 
