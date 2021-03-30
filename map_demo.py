@@ -37,11 +37,11 @@ page = st.sidebar.radio(
 st.title("Folium map in Streamlit")
 # 地図作成
 m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
-placeholder = st.empty()
+
 if page == 'Marker':
     for (lat, lon) in shop_lst:
         folium.Marker((lat, lon)).add_to(m)
-    placeholder.markdown("**地図上にマーカーを置けます**")
+    msg = "地図上にマーカーを置けます"
         
 elif page == 'Poly Line':
     folium.PolyLine(
@@ -51,13 +51,13 @@ elif page == 'Poly Line':
 
 elif page == 'MarkerCluster':
     plugins.MarkerCluster(shop_lst).add_to(m)
-    placeholder.markdown("**倍率を変えると面白いよ**")
+    msg = "倍率を変えると面白いよ"
 
 if page == 'Tooltip':
     for _, shop in df_shops.iterrows():
         note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
         folium.Marker((shop['lat'], shop['lon']), tooltip = note).add_to(m)
-    placeholder.markdown("**マーカーの上にマウスを持ってきてね**")
+    msg = "マーカーの上にマウスを持ってきてね"
 
 if page == '全部がっちゃんこ':
     marker_cluster = plugins.MarkerCluster().add_to(m)
@@ -68,7 +68,7 @@ if page == '全部がっちゃんこ':
         locations = walk_lst,
         tooltip = "いつぞや歩いたルートです。"
     ).add_to(m)
-    placeholder.markdown("**全部がっちゃんこできます**")
+    msg = "全部がっちゃんこできます"
 
 if page == 'CircleMarker':
     for _, shop in df_shops.iterrows():
@@ -81,8 +81,8 @@ if page == 'CircleMarker':
                             fill_opacity = 0.4,
                             tooltip = note,
                            ).add_to(m)
-    placeholder.markdown("**コンビニ別に色分けしました**")
+    msg = "コンビニ別に色分けしました"
 
 # 地図表示 Folium map in Streamlit
 folium_static(m)
-
+st.markdown("**{}**".format(msg))
