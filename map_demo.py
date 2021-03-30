@@ -88,10 +88,10 @@ if page == 'CustomIcon':
     for _, shop in df_shops.iterrows():
         note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
         c_icon = CustomIcon(shop['icon'], icon_size=(20, 20))
-        folium.CustomIcon((shop['lat'], shop['lon']), 
-                          icon = c_icon,
-                          tooltip = note,
-                         ).add_to(m)
+        CustomIcon((shop['lat'], shop['lon']), 
+                   icon = c_icon,
+                   tooltip = note,
+                  ).add_to(m)
     msg = "アイコンもカスタマイズできますよ"
     
 # 地図表示 Folium map in Streamlit
