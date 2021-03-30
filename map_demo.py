@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_folium import folium_static
 import folium
 from folium import plugins
+from folium.features import CustomIcon
 import gpxpy
 import pandas as pd
 
@@ -29,7 +30,7 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 # サイドメニュー
 page = st.sidebar.radio(
     'Select menu：',
-    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip', '全部がっちゃんこ', 'CircleMarker'],
+    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip', '全部がっちゃんこ', 'CircleMarker', 'CustomIcon'],
     index = 0
     )
 
@@ -83,6 +84,16 @@ if page == 'CircleMarker':
                            ).add_to(m)
     msg = "コンビニ別に色分けしました"
 
+if page == 'CustomIcon':
+    for _, shop in df_shops.iterrows():
+        note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
+        icon = CustomIcon(shop['icon'], icon_size=(20, 20))
+        folium.CustomIcon((shop['lat'], shop['lon']), 
+                          icon = icon,
+                          tooltip = note,
+                         ).add_to(m)
+    msg = "アイコンもカスタマイズできますよ"
+    
 # 地図表示 Folium map in Streamlit
 folium_static(m)
 st.markdown("**{}**".format(msg))
