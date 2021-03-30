@@ -29,14 +29,14 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 
 # サイドメニュー
 page = st.sidebar.radio(
-    'Select menu：',
+    '次のメニューからお選び下さい：',
     ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip', '全部がっちゃんこ', 'CircleMarker', 'CustomIcon'],
     index = 0
     )
 
 tile = st.sidebar.selectbox(
-        "お好みの地図を選んでね",
-        ('OpenStreetMap', 'Mapbox Bright', 'mapboxbright', 'cartodbdark_matter', 'cartodbpositron', 'mapboxcontrolroom')
+        "お好みの地図を選んでね：",
+        ('OpenStreetMap', 'cartodbdark_matter', 'cartodbpositron', 'openstreetmap', 'stamenterrain', 'stamentoner', 'stamenwatercolor')
     )
 
 # タイトル
