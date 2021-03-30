@@ -34,10 +34,15 @@ page = st.sidebar.radio(
     index = 0
     )
 
+tile = st.sidebar.selectbox(
+        "お好みの地図を選んでね",
+        ('OpenStreetMap', 'Mapbox Bright', 'mapboxbright', 'cartodbdark_matter', 'cartodbpositron', 'mapboxcontrolroom')
+    )
+
 # タイトル
 st.title("Folium map in Streamlit")
 # 地図作成
-m = folium.Map(location=[center_lat, center_lon], zoom_start=12)
+m = folium.Map(location=[center_lat, center_lon], tiles=tile, zoom_start=12)
 
 if page == 'Marker':
     for (lat, lon) in shop_lst:
