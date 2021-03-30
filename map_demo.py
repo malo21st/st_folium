@@ -36,7 +36,7 @@ page = st.sidebar.radio(
 
 tile = st.sidebar.selectbox(
         "お好みの地図を選んでね：",
-        ('OpenStreetMap', 'cartodbdark_matter', 'cartodbpositron', 'openstreetmap', 'stamenterrain', 'stamentoner', 'stamenwatercolor')
+        ('OpenStreetMap', 'cartodbdark_matter', 'cartodbpositron', 'stamenterrain', 'stamentoner', 'stamenwatercolor')
     )
 
 # タイトル
