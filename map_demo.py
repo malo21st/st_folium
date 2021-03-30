@@ -79,6 +79,7 @@ if page == 'CircleMarker':
                             fill_color = shop['color'],
                             tooltip = note,
                            ).add_to(m)
+    placeholder.text("コンビニ別に色分けしました")
 
 # 地図表示 Folium map in Streamlit
 folium_static(m)
