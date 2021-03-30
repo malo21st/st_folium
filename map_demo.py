@@ -74,7 +74,7 @@ if page == 'CircleMarker':
     for _, shop in df_shops.iterrows():
         note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
         folium.CircleMarker((shop['lat'], shop['lon']), 
-                            radius=10,
+                            radius= 5,
                             color = shop['color'],
                             fill_color = shop['color'],
                             tooltip = note,
