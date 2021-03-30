@@ -29,7 +29,7 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 # サイドメニュー
 page = st.sidebar.radio(
     'Select menu：',
-    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip', '全部がっちゃんこ'],
+    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip', '全部がっちゃんこ', 'CircleMarker'],
     index = 0
     )
 
@@ -69,6 +69,16 @@ if page == '全部がっちゃんこ':
         tooltip = "いつぞや歩いたルートです。"
     ).add_to(m)
     placeholder.text("全部がっちゃんこできます")
+
+if page == 'CircleMarker':
+    for _, shop in df_shops.iterrows():
+        note = "<b>{}</b><br>{}".format(shop['名称'], shop['住所'])
+        folium.CircleMarker((shop['lat'], shop['lon']), 
+                            radius=10,
+                            color = shop['color'],
+                            fill_color = shop['color'],
+                            tooltip = note,
+                           ).add_to(m)
 
 # 地図表示 Folium map in Streamlit
 folium_static(m)
