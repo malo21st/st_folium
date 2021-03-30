@@ -76,8 +76,9 @@ if page == 'CircleMarker':
         folium.CircleMarker((shop['lat'], shop['lon']), 
                             radius= 5,
                             color = shop['color'],
+                            opacity = 0.7,
                             fill_color = shop['color'],
-                            fill_opacity = 0.8,
+                            fill_opacity = 0.5,
                             tooltip = note,
                            ).add_to(m)
     placeholder.text("コンビニ別に色分けしました")
