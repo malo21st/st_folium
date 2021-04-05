@@ -54,7 +54,7 @@ elif page == 'Poly Line':
     folium.PolyLine(
         locations = walk_lst
     ).add_to(m)
-    with open('41201.topojson') as f:
+    with open('410004saga.geojson') as f:
         saga = json.load(f)
     folium.GeoJson(saga).add_to(m)
     msg = "線も引けちゃうよ"
