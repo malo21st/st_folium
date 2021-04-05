@@ -54,8 +54,8 @@ elif page == 'Poly Line':
         locations = walk_lst
     ).add_to(m)
     folium.TopoJson(
-        data=open('41201.topojson', encoding='utf-8'),
-        object_path='41201.topojson',
+        data=open('41201.topojson'),
+        object_path='objects.41201',
         name="topojson"
     ).add_to(m)
     msg = "線も引けちゃうよ"
