@@ -102,7 +102,7 @@ if page == 'CustomIcon':
 elif page == 'geojson':
     with open('410004saga.geojson') as f:
         saga = json.load(f)
-    folium.GeoJson(saga).add_to(m)
+    folium.GeoJson(saga, name="GST_NAME", ).add_to(m)
     msg = "geojsonも扱えます"
 
 # 地図表示 Folium map in Streamlit
