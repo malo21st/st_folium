@@ -5,6 +5,7 @@ from folium import plugins
 from folium.features import CustomIcon
 import gpxpy
 import pandas as pd
+import json
 
 # コンビニの位置データ
 df_shops = pd.read_json('shop.json')
@@ -53,11 +54,9 @@ elif page == 'Poly Line':
     folium.PolyLine(
         locations = walk_lst
     ).add_to(m)
-    folium.TopoJson(
-        data=open('41201.topojson'),
-        object_path='objects.41201',
-        name="topojson"
-    ).add_to(m)
+    with open('41201.topojson') as f:
+        saga = json.load(f)
+    folium.GeoJson(saga).add_to(m)
     msg = "線も引けちゃうよ"
 
 elif page == 'MarkerCluster':
