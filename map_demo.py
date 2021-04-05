@@ -31,7 +31,7 @@ center_lon = (df_gpx['lon'].min() + df_gpx['lon'].max())/2
 # サイドメニュー
 page = st.sidebar.radio(
     '次のメニューからお選び下さい：',
-    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip', '全部がっちゃんこ', 'CircleMarker', 'CustomIcon'],
+    ['Marker', 'Poly Line', 'MarkerCluster', 'Tooltip', '全部がっちゃんこ', 'CircleMarker', 'CustomIcon', 'geojson'],
     index = 0
     )
 
@@ -54,9 +54,6 @@ elif page == 'Poly Line':
     folium.PolyLine(
         locations = walk_lst
     ).add_to(m)
-    with open('410004saga.geojson') as f:
-        saga = json.load(f)
-    folium.GeoJson(saga).add_to(m)
     msg = "線も引けちゃうよ"
 
 elif page == 'MarkerCluster':
@@ -101,7 +98,13 @@ if page == 'CustomIcon':
                    tooltip = note,
                   ).add_to(m)
     msg = "アイコンもカスタマイズできますよ"
-    
+
+elif page == 'geojson':
+    with open('410004saga.geojson') as f:
+        saga = json.load(f)
+    folium.GeoJson(saga).add_to(m)
+    msg = "geojsonも扱えます"
+
 # 地図表示 Folium map in Streamlit
 folium_static(m)
 st.markdown("**{}**".format(msg))
